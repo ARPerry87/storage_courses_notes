@@ -1,0 +1,43 @@
+#temp conversion from C to F
+#Example of good code with good indentation and following the naming convention
+
+def ct(c)
+	f = c(c * 9/5) + 32
+	print "The result is: "
+	print f 
+	puts "."
+end 
+
+cf(100)
+
+
+
+#temp conversion from C to F
+#this example has bad example of bad naming convention, bad indentation, white spaces
+
+def celsiusto_fahr(degreescelsius)
+fttempcalc = degrees celsisus * 9/5    +     32
+print                     "The result is: "
+print                       ftempcalc 
+puts        "."
+
+end 
+
+
+celsiusTo_fahr(100)
+
+
+Notes: 
+
+Consistency is key
+
+Good comments help the reader understand 
+Good comments are in-sync with the code 
+
+Two space indents (some compilers will actually yell at you over indentations)
+Adhere to naming conventions (I am a stickler for this)
+Avoid unncessarily deep nested code blocks 
+
+For example: 
+https://shopify.github.io/ruby-style-guide
+

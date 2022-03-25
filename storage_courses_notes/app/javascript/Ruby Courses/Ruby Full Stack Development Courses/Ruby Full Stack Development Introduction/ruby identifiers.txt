@@ -1,0 +1,27 @@
+Variables = Local, Instance, Class, Global 
+
+Type: Local		Instance	Class		Global
+Conv  my_name	@my_name	@@my_name	$MY_NAME
+
+Constants 
+MY_NAME, MyName
+
+Method Names 
+a_method, to_i
+
+Keywords 
+Class, def, if, for... 
+
+Local variable - convention to keep lowercase and seperate by _. These variables are local to the code construct in which they are declared. A local variable is only accessible within the block of its initialization. Local variables are not available outside the method. 
+
+Instance variables are - the basic storage and retrival mechanism for values that relate to individual objects. An instance variables enables an instance object to remember states. They function similar to other variables. Instance are only visible to the object they belong to and an instance variable inside a class can be used by any method defined within that same class. 
+
+Class variables - store information relating to a particular class hiearchy and they follow the same rules as instance variables do except they began with two @@. 
+
+Global variables - have a global scope and covers an entire program. Always begin with $. Typical to use all Caps. 
+
+Constants - begin with Uppercase, camelcase. 
+
+Method names - follow the same rules as local variables but can end with punctuation. 
+
+Keywords - list of reserved words that can't be used. 

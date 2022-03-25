@@ -1,0 +1,6 @@
+assign things to a variable in irb with = 
+
+msg = "hello"
+
+up arrow to bring a command back down 
+

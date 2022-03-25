@@ -1,0 +1,13 @@
+irb notes 
+
+type irb to enter interactive ruby prompt 
+
+use it like you would use a ruby file but have it act dynamically 
+doesn't respond to bash or shell commands so it isn't a shell or bash line response
+
+to exit type exit
+
+open irb config file to configure it (duh) uncomment system cls for clearing screen
+
+irb --simple-prompt for starting it with simple prompt 
+
