@@ -1,0 +1,21 @@
+MVC 
+- Model View Controller Paradigm 
+- Model 
+	- User interfaces have to work with data in order to be used to create, read and update data. In the MVC model refers to what you use to represent the data you're working with. The data in the database is represented with a model. 
+- The view is used to represent what the user sees. 
+	- The data that your working with, the code you are working on, is what the user ultimately will end up being shown in the View. There can be multiple views. 
+- The Controller can be thought of as all of the complex built that allow the view to interact with the model. It controls the view using the model. EventsController, etc. 
+
+-This archeticture pattern is used to build robust, maintainable interfaces. 
+
+React is used for the View. 
+Node is for the Model (I believe? It's used for interfacing with the database)
+Vue is another front end 
+Next is front end as well 
+
+React is used to build component based interfaces--logical units, can be used acrossed multiple pages or even apps 
+
+Simple components can be used together 
+
+Component driven development CDD think in component think of them like legos 
+
