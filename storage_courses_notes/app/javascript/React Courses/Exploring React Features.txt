@@ -1,0 +1,34 @@
+Exploring React Features 
+- Focus on view design based on internal compnonent state 
+- Tell react what state you want the user interface to be in - abstracts out attribute manipulation, event handling, and DOM updates 
+- React will update and render the right compnonet based on state 
+- Code is predictable, robust, and easy to debug 
+
+- COmpnonent based - View compnontes in react have both the logic and behavior of the view 
+	- This eleminates bridging the code where UI changes are relayed to the JS code 
+	- The JS code checks the logic and then updates the DOM code 
+	- Grouping them together makes them manageable and more inituitive to maintain 
+
+- Virtual DOM 
+	- DOM rendering tends to be what makes web apps really slow 
+	- React speeds this up by mainitain a mirror copy of every DOM element 
+	- Imagine every dom node recreated in memory 
+	- This is the Virtual DOM 
+
+- Server side Rendering 
+	- The virtual DOM also enables rendering complete UIs without a browser 
+	- React allows you to create the entire web page on the server 
+	- Simply send it down to the client 
+	- The initial page load becomes super fast 
+
+- One way data flow 
+	- React uses composition to build indiviual view components 
+	- Components contain other components within them to build up complex views 
+	- Data passed to react compnonets flows down the hierachy from parent to child 
+	- This streamlines communications and makes react very inutitive 
+
+- React Native is used to build Javascript mobile applications 
+	- The concepts remain the same 
+	- All of it remains the same
+	- Platform agnostic native compnonets with high-performance across multiple platforms 
+
