@@ -1,0 +1,11 @@
+Building webapps and learning to think in react 
+- Showing products in stock and user interface and the hierachy of what's shown 
+	- The filtered products table in the search bar table that's been sorted is the top of the hiearchy 
+		- it's broken down into nested subcomponents not into one monolithic compnonent
+		- Search bar and check box for example 
+		- The lower part can be thought of the product table which displays the products that match the search function we have completed and what's available
+		- Can be nested into further subcomponents such as sporting goods, electronics, phones, etc. 
+		- Individual products can be their own subcomponent 
+		- granularlity is up to the programmer
+	- The component tree all comes together for form the interface 
+	- Each component should only have a single responsiblity and thus is granular 

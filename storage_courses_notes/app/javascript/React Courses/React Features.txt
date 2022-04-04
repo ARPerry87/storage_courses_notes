@@ -1,0 +1,7 @@
+React Features
+- React is a declarative framework - design views associated with state, as state changes the views will update automatically. 
+- Component based - encapsulated compnonets that manage their own state. 
+- Perfomant - uses a virtual representation of the DOM which is reconciled with an actual DOM 
+	- only rerenders changes that have actually taken places inside of the DOM rather than rerendering all DOM nodes to save performance hits
+- Server side rendering - with Node and communication using one-way data flow - data flows from the top level compnonent to the lower level compnonent 
+- React native - For mobile application 
