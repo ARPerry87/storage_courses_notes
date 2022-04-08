@@ -1,0 +1,44 @@
+Notes on JSX and Babel 
+- JSX is written in HTML tags so that the compilers can easily handle them 
+	- This also makes it far easier to read 
+	- Do not use React.createlment as it makes it hard to read and hard to track errors (duh)
+	- JSX makes it to where code inside of JSX is easy and quick to code inside of Javascript files
+- Example JSX code 
+	var some_list = (
+		<ul id="nav-id">
+			<li>Red</li>
+			<li>Green</li>
+		</ul>
+	); Should close out JSX code with a ; and enclose it with () like Javascript code 
+
+- Browser doesn't understand JSX, but it does understand javascript, so any JSX that is imbedded has to be translatted to a form the browswer gets. 
+	- Notice that HTML elements are specificed within Javascript, this is a snippet of Javascript 
+	- The browser doesn't understand JSX 
+	- Which means that this bit of code cannot run directly on the browser 
+	- This has to be transformed to Javascript before the browswer can understand and render the element and render it 
+
+- var some_list = React.createElement(
+	"ul",
+		{ id: "nav-id" }, 
+		React.createElement(
+			"li",
+			null,
+			"Red"
+		),
+		React.createElement(
+			"li",
+			null,
+			"Green"
+		)
+	);
+
+- This transformation is done by the Babel compiler 
+- Run babel on your javascript code which contains JSX 
+- To get pure Javascript! 
+- React is compatible with ES6 
+- Not all browswers support ES6 
+- Babel can be used to convert ES6 to ES5 so it's compatible with all browswers 
+
+On the fly in the browser, prototyping during development, and also at build time during production environments for loadtimes 
+
+Babel will run on the Javascript just before the browser renders the page and will convert it to pure javascript. Doing it on the fly is ineffecient and a major performance hit. On the fly transofrmation is used only during development when you quickly want something quickly. For production enviornments babel will preprocess and compile JSX to javascript. 
