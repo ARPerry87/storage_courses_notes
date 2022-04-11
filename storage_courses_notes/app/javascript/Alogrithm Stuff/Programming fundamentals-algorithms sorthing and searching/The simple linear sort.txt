@@ -1,0 +1,5 @@
+-Simple linear search 
+	- No matter how a computer stores randomized items in an array or collection it starts at 0-i index 
+
+	- Simple linear searches are not very effecient
+	- Are brute force and need to be done the the same time, one after another, each time, iterating again and again, very costly on servers 

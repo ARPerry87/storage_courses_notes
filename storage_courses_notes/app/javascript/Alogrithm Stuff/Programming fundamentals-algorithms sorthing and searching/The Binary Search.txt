@@ -1,0 +1,15 @@
+Binary Search 
+	- Array 
+	- Binary search will work best if it's ordered 
+	- Bi suggests the number 2 
+	- Splits in 2 
+	- [D, G, K, M, P, T, W]
+	- If looking for G, then when doing a binary search, you would be able to elimnate at M to the right, as G is less than M, so G must be in the left half of the array 
+
+	- [D, G, K] 
+
+	- The left half is selected to be 1 minus the first half so k is in this case and the beginning of the first half, i.e. D
+
+	- We split this sublist again, and we check the element again, and we find that it's the element we're looking for again 
+
+	- Much more effecient than linear search 

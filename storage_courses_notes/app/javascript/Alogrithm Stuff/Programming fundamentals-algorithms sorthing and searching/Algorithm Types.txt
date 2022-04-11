@@ -1,0 +1,35 @@
+-Brute Force Type
+	- Tried all types of solutions, last resort 
+	- Trial and error 
+- Greedy Algrotihm 
+	- Optimization problems 
+	- Min and max issues (Excels solver issues)
+	- Sizing tiles 
+- Recursive 
+	- Repeat a block of steps until a solution is found 
+	- Calculating greatest common factor 
+- Backtracking 
+	- Incremental steps to find solution 
+	- One part at a time, move backwards until we find solution 
+
+- Brute force 
+	- Any problem 
+- Greedy 
+	- Sorting and scheduling
+- Recursive 
+	- Certain math problems 
+- Backtracking 
+	- generating binary strings 
+
+Simple linear search 
+	- take a collection of data and check each element in collection 
+Binary search 
+	- Take a collection of data and sort it, and will only work on sorted data, and chop the mass in half, and decide which half you want to look at. 
+		- Then split it again and look at the data again 
+			- Keeps splitting until you find what element you want 
+Bubble sort
+	- Checks the adjacent elements and when it finds the adjacent elements it'll swap the elements if they're in the wrong order. 
+		- and it'll keep doing this until everything is sorted properly 
+Selection sort
+	- Start off and assume that the first element is considered sorted
+		- Check the next element, and assume the next element, and continue to do so until the entire list is sorted. 
