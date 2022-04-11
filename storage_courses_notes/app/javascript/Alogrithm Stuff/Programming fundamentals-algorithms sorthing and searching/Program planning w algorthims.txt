@@ -1,0 +1,11 @@
+- Properties of an algorithm 
+	- inputs and outputs 
+	- Steps to solve the problem 
+	- Effective 
+	- Agnostic 
+- Algorithm vs Psuedocode 
+	- An algorithm is a sequence of steps to solve a given problem 
+		- a systematic and logical apprcoach where the procedure is defined step-wise 
+		- Such as baking a cake and putting on frosting (step wise)
+	- A Psuedocode is a method of developing an algrothin 
+		- it is written in plain language and uses short phrases to write the funcationaliteis of a specific line of code

@@ -1,0 +1,35 @@
+Start 
+	Declare variables a, b, and c
+	Read variables a, b, and c 
+	If a > b 
+	Then check if a > c 
+		Display a is the largest number 
+	Otherwise, display c is the largest number 
+	If b > c 
+		Display b is the largest number 
+	Otherwise, display c is the greatest number 
+stop
+
+Look at if the first number is larger than the middle, 
+if so, then look at if it's larger than the last? It it is
+Then A is the biggets number, if not, then C is! 
+Otherwise, if B is larger than c, show B is the largest 
+otherwise display that yet again the last number is 
+the largest, and stop the loop. 
+
+Start
+	Declare variable number, f, i
+	Read number 
+	Initialize variable f = 1 and i = 1 
+	Repeat until i<=number 
+	f = f*i
+	i=i+1
+	print f
+stop
+
+Print the value of F each time the loop goes around. 
+We won't be doing it indefinitely, and we set a limit, 
+Which is i, and we'll be counting it each time. We'll be 
+Repeating the two middle lines until that i becomes 
+the number that the user gives us, until i becomes that 
+number. 
