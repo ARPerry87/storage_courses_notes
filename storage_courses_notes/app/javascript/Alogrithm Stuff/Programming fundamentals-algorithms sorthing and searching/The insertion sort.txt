@@ -1,0 +1,6 @@
+Insertion Sort 
+	-Immediately consider the first element to be sorted
+	- We check that element to the one next to it and see if it needs to be swapped 
+	- If we swap those then we have those two then we don't need to worry about those, then we check the second element against the third element
+	- Then the Third against the Fourth 
+	- Keep swapping until everything is sorted 
