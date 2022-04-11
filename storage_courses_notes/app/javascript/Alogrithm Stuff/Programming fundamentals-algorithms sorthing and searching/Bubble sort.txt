@@ -1,0 +1,34 @@
+Bubble sort 
+	- We'll be taking either the largest or the smallest element and moving it to the right or the left 
+		- [T, G, W, P, K, D, M]
+			- We'll be moving the largest elements to the right 
+			- Where the M is that's where the W should be 
+
+			- First round, look at the T and the G 
+
+			- The T and the G aren't in the right order
+
+			[T, G] wrong
+			[G, T] Right 
+
+			Now we check the next two and move down the index 
+
+			[G, T, W, P, K, D, M]
+
+			[W, P] Wrong 
+			[P, W] Right 
+
+			[G, T, P, W, K, D, M]
+
+			Now we keep doing this until it's sorted how we want it to be 
+
+			[W, K] Wrong 
+			[K, W] Right 
+
+			[W, D] Nope
+			[W, M] Still no
+			[M, W] finally! 
+
+			this is just the first iteration through the bubble array, getting just the W to it's proper sort. 
+
+			But, the process is the same. 
