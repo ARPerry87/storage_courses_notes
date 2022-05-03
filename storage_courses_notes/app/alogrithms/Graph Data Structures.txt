@@ -1,0 +1,19 @@
+DFT and BFT 
+	- DFT 
+		- Start from the source and go deep in one direction 
+	- BFT - you visit nodes closest to the start first and then nodes further away until you visit all of the nodes 
+
+	- In a graph multiple paths can lead to an end node 
+
+	- Graphs can have cycles so the node can be visited multiple times 
+
+	- Traversals can be infinite so need to keep track 
+
+	- Depth first Traversal 
+		- start off at source and go as deep as possible before coming back
+
+		- Simple array tracks already visited nodes 
+	- BFT - Level - wise manner traversal. 
+		- 1 - level deep, then 2, then 3. 
+
+	- 
