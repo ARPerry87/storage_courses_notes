@@ -34,4 +34,139 @@ Binary Search
 		- O(n) - what big o notation looks like, it's O (log n) aka O (number of operations)
 		- Big O establishes worst case run time
 		- O(n) is reassurance because it will never be more than having to look at every single entry 
+
+		Big O times sorted fastest to slowest: 
+			- O(log n) - also known as log time: example Binary Search 
+			- O(n) - linear search, search every thing
+			- O(n^2) - Example: slow sorting algortim, like selection sort 
+			- O(n!) - really slow algorithm, like traveling salesperson 
+			- O(n*Log n) a fast sorting algorithim like quick sort
+
+			- Algorithm speed isn't measured in seconds, but the growth of number of operations 
+			- How quickly the run time of an alogrithm increases as the size of input increases 
+			- O(log n) is faster than O(n)
+
+- Arrays - can run out of storage, and will have to add space on the fly, this takes up memory, and you may end up not needing that much memory. Arrays you know the addresses for every item. 
+	- harder to insert in middle as it involves shifting
+	- Used more often 
+	- can allow random access
+
+- Linked List - items can be anywhere in memory, each item stores the address of the next item in the list. A bunch of random memory addresses are linked together. Better for inserts. Addresses are random. 
+	- easier to insert into the middle of a linked list as changing the previous elements point to 
+	- easier to delete because you just need to change what the previous element points to 
+	- Only allow sequential access
+- Selection Sort - sort a list and find a specific value and add to a new list, and keep iterating through, selecting a new specific value, adding it to that new list, until the new list is complete and is sorted. 
+	- Selection sort has a Big O notation of 
+		- O(n^2) as you have to touch every index of a list, and have to do so iteratively, as in multiple times, to get the sorted list. 
+		- Can be used to sort: 
+			- Names in a phone book 
+			- Travel dates 
+			- Emails 
+		- Quicksort is faster than Selection Sort 
+	Example Code 
+
+	def findSmallest(arr)
+		smallest = arr[0] # stores the smallest value
 		
+		smallest_index = 0 # stores the index of the smallest value 
+		
+		for i in range(1, len(arr)): #starts a for loop that will return the smallest index in an array 
+			if arr[i] < smallest: 
+				smallest = arr[i]
+				smallest_index = i
+		return smallest_index 
+
+	def selectionSort(arr):
+		newArr = []
+		for i in range(len(arr)): #creates a for loop so that the for loop inside of findSmallest will then begin the newArr adding and popping process, to add the smallest element to the array. 
+
+			smallest = findSmallest(arr) #finds the smallest element in the array and ads it to the new array 
+
+			newArr.append(arr.pop(smallest))
+
+		return newArr
+
+	print selectionSort([5, 3, 6, 2, 10])
+
+
+	- Chapter 3 - Recursions 
+
+	- If given a box to look through until you find something
+
+	code example 
+
+	def look_for_key(main_box):
+		pile = main_box.make_a_pile()
+		while pile is not empty: 
+				box = pile.grab_a_box()
+				for item in box: 
+					if item.is_a_box():
+						pile.append(item)
+					elif item.is_a_key():
+						print "found the key!"
+
+	Second example is recursion: 
+
+	def look_for_key(box): 
+		for item in box: 
+			if item.is_a_box: 
+				look_for_key(item)
+			elif item.is_a_key():
+				print("found the key!")
+
+	both approaches accomplish the same thing but the second one is clearer in how it does it. 
+
+	Recursion needs a base case or it will perpetully recurse forever. Example 
+
+	def countdown(i): 
+		print i 
+		if i <= 0: 
+			return 
+		else: 
+			countdown(i-1)
+
+	The Call Stack 
+		- Example of a call stack 
+			- A todo list that can only have things added or removed, this is an example of a pop or a push function
+
+		- Code example for a call stack for a computer 
+
+		def greet(name): 
+			print "hello, " + name + "!"
+			greet2(name)
+			print "getting ready to say bye..."
+			bye()
+
+		def greet2(name): 
+			print"how are you, " + name + "?"
+
+		def bye():
+			print "ok bye!"
+
+	When you call a function from another function, the calling function is paused in a partially completed state. All the values of the variables for that function are still stored in memory. 		
+
+	When you're done with one function (as in calling the completed function) in a call stack, like a box with multiple stacks on top of each other, the completed box of information gets popped off, leaving only the partially completed, needing to be finished functions in memory functions left in the stack. 
+
+	Recursive functions use call stack as well. (thank god) Let's us the factorial function with it. Factorial(5) is written as 5! and ti's defined like this 5! = 5 * 4 * 3 * 2 * 1 here's the code for it 
+
+	def fact(x)
+		if x ==1
+			return 1 
+		else: 
+			return x * fact(x-1)
+
+	This callstack iterates through the stack of fact, going through twice until it hits x = 1 until it stops as the recurisve call, then stops and popping off the stack, which means its the first call we return from, and returns a 1. The others, return x*x-1 so 3*2
+
+	Stacks play big parts in recursion. 
+
+	Look into tail recursion? 
+
+	- Recursion is when a function calls itself 
+	- Every recursive function has two cases: the base case and the recursive case 
+	- A stack has two operations: push and pop 
+	- All function calls go onto the call stack 
+	- The call stack can get very large which takes up a lot of storage 
+
+
+Chapter 4 - QuickSort 
+
