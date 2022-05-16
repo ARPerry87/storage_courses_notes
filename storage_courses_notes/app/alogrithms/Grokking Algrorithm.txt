@@ -408,3 +408,98 @@ Chapter 5
 
 
 Chapter 6
+
+	 - Graph algorithms 
+	 - Breadth first search allows you to find the shortest distance between two things but shortest distance can mean a lot of things. 
+
+	 Can be used to: 
+
+	 - Write a checkers AI to write fewest moves to victory 
+
+	 - Spell checker 
+
+	 - Breadth First has two steps: 
+	 	- model the problem as a graph 
+	 	- solve the problem using breadth first search 
+
+	 - What is a graph 
+	 	- A graph is a set of connections. 
+	 		- Each Graph is made up of nodes and edges 
+	 		- A node can be directly connected to many other nodes, and those nodes are called it's neighbors. 
+	 		- A neighbor is only a neighbor if it's directly connected to another node through an edge 
+	 		- Graphs are a way to model how different things are connected to one another. 
+
+	 - Helps answers 2 types of questions: 
+	 	- Is there a path from node a to b 
+	 	- what is the shortest path from a to b 
+
+	 	E.G. searching your friends, then your friends friends, then their friends friends, until you find someone to sell your mangos if you grow mangos, until you exhaust your network. 
+
+
+	 - Finding the shortest path 
+
+	 - recap
+
+	 	- two questions 
+	 		- Is there a path between node a to node b 
+	 		- what is the shortest path from node a to node b 
+
+	 -	Breadth first searches first degree connections first before moving on to second degree. 
+
+	 - Queues 
+	 	- Can't access random elements, instead there are two only operations, enqueue and dequeue (works similarly to a stack)
+	 	- If you enqueue two items to the list the first item you added will be dequeued before the second item. 
+	 	- THe quque is called a Fifo data structure. First in, First Out. 
+	 	A stack is called LIFO, Last in First Out. 
+
+	 	Exercises: 
+
+	 	6.1 
+
+	 	2 
+
+	 	6.2 
+
+	 	2 
+
+
+	- Implementing the Graph 
+
+		- A hash table lets you express relationships 
+
+		graph = {}
+		graph ["you"] = ["alice", "bob", "claire"]
+
+		- When values have arrows pointing to them, but no arrows from them to another neighbor, we call it a directed graph, the relationship is one way. 
+
+		- An undirected graph doesn't have arrows and both nodes are each others neighbors. 
+
+		Example Code: 
+
+		def search(name): 
+
+			search_queue = dequeue()
+			search_queue += graph[name]
+			searched = [] #this array is how you keep track of which people you've searched before
+
+			while search_queue: 
+				person = search_queue.popleft()
+				if not person in searched:  # only search this person if you haven't already searched them 
+					if person_is_seller(person):
+						print(person + "is a mango seller!")
+						return True
+					else: 
+						search_queue += graph[person]
+						searched.append(person) #mark this person as searched 
+			return False
+		search("you")
+
+
+	Big O notation for this is O(number of edges) at least. You also keep a queue of every person you search, adding a person takes constant time, so it's O(1). Doing this for every person will take O(number of people). 
+
+	For Breadth First Big O is commonly written as 
+		- O(V+E) verticals and edges 
+
+
+Chapter 7 
+
