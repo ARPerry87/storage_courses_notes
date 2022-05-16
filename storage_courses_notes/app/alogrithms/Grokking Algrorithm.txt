@@ -312,3 +312,99 @@ Chapter 4 - QuickSort
 			return [multi*val for val in arr]
 
 			print(multi([2,3,7,8,10], 2))
+
+
+Chapter 5 
+
+- Finding an item explicitly by it's name or rather it's key value pair, and only that one specific item is in Big O notation terms: 
+	- O(1) time 
+
+	- Hash functions map strings to numbers and require a few things: 
+		- It needs to be consistent, every time you write in a specific key, you need to get back the same value 
+		- Different keys should return different values, no two keys should be the same 
+		- Hash function consitently maps a name to the same index. Every time you type a key it'll get the same number back. 
+		- The hash fucntion maps different strings to different indexes. Everything maps to different slots in the array to where you put can store it's value. 
+		- The hash function knows how big your array is and only returns valid indexes. Won't return larger indexes if your array is only 5, and you ask for 10. 
+
+		example code: 
+
+		book = dict()
+
+		book["apple"] = 0.67
+		book["milk"] = 1.49
+		book["avocado"] = 1.49
+		print(book)
+
+		('avocado': 1.49, 'apple': 0.67, 'milk': 1.49)
+
+
+		- print book['avocado']
+			1.49 #price of the avocado 
+
+		Exercises: 
+
+		 5.1 is consistent
+
+		 Not 
+
+		 Not 
+
+		 Consistent - ok I can see why because it would always return the length you give it and then index it, it's not a random number, and it doesn't give you the next empty slot, so it would be consistent 
+
+	- phone books are great use cases for hash tables 
+
+	- Also use hash mapping for DNS resolution. 
+
+	- They also prevent duplicate entries. 
+
+	example code for if someone has voted or not: 
+
+	voted = {} 
+
+	def check_voter(name): 
+		if voted.get(name): 
+			print("kick them out"): 
+		else: 
+			voted[name] = True 
+			print("let them vote!")
+
+
+	By storing these in a hash, you're looking them up by using O(1) which is a much faster way to search than O(n) or O(n^^2). 
+
+	Hashing can also act as caching, similar to memorizing a fact that a child keeps asking. It stops doing all the work of what the homepage looks like, and instead memorized it, and sends a homepage to you on loadup. 
+
+		- Advantages are you get the webpage faster and webpages do less work 
+
+	- All pages are cached and then are mapped to each other through the hashes 
+
+	- example code: 
+
+	cache = {}
+
+	def get_page(url): 
+		if cache.get(url):
+			return cache[url] # returns cached data
+		else: 
+			data = get_data_from_server(url)
+			cache[url] = data # saves the data in your cache
+			return data 
+
+	- here we make the server do work only if the url isn't in the cache. Before you return the data, though, you save it in the cache. 
+
+	- Hashes are good for 
+		- Modeling relationships from one thing to another thing 
+		- Filtering out duplicates 
+		- caching/memorizing data instead of making your server do work 
+
+	- Collisions 
+
+		- Collisions happen when you've already assigned a position in a hash and need to assign that position to another key value pair. 
+		- A work around is a linked list in that slot 
+		- However, this can quickly become problematic and messy, so ideally work with a function that will evenly distribute your key value pairs 
+
+	- Performance 
+		- To avoid collisions that slow down hash tables, you need to avoid low load factor and have a good hash function 
+		- Once your load factor is greater than 0.7 it's time to resize your hash table 
+
+
+Chapter 6
