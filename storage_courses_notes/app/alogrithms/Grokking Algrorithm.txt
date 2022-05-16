@@ -170,3 +170,145 @@ Binary Search
 
 Chapter 4 - QuickSort 
 
+	- It's a D&C (divide and conquer) strategy
+	- It's recurisve in nature 
+	- There are two steps 
+		- Figure out the base case, this should be the simplest possible case 
+		- Divide or decrease your problem until it becomes the base case 
+
+		- Farmer's land problem, find the biggest chunk of the land that can be split up easily by having two boxes that can multiply by each other. The smaller portion of the land left over, can be used to repeat this process. 
+
+		- Euclid's algorithm 
+			- If you find the biggest box that will work for this size, that will be the biggest box that will work the entire farm. 
+
+		-you keep dividing the land over and over until you reach the smallest plot of land which will end up being 80m as it's a factor of 160 
+
+	- Recap on how D&C works 
+		- Figure out a simple case as the base case 
+		- Figure out how to reduce your problem to get to the base case 
+
+		It's a way to think about a problem, not a simple algorithm you can apply to the problem 
+
+		Example of recursion for adding an array on itself from internet: 
+
+		def listsum(numList):
+   			if len(numList) == 1:
+        		return numList[0]
+   			else:
+        		return numList[0] + listsum(numList[1:])
+
+		listsum([1,3,5,7,9]))		
+
+	When writing a recursive function involving an array, the base case is often an empty array or an array with one element. If your stuck, try that first. 
+
+	Binary search is also a divide and conquer algorithm. 
+
+	Quicksort 
+
+	- quicksort is a sorting algorithm 
+	- much faster than selection sort 
+	- No need to sort arrays that are empty or have one element 
+
+	def quicksort(array): 
+		if len(array) <2: 
+			return array 
+
+	- Array with two elements, if the first element is smaller, if it isn't, swap them. 
+
+	- Three element arrays 
+
+	- First element in an array is called the pivot, you sort on the pivot finding numbers smaller than it, and creating a subarray 
+
+	quicksort([15,10]) + [33] + quicksort([])
+
+	[10, 15, 33]
+
+	- works with any pivot. 
+
+	- both sub-arrays have only one element, and you know how to sort those. 
+
+	- pick a pivot 
+	- partition the array into two sub-arrays: elements less than the pivot and elements greater than the pivot
+	- call quicksort recursively on the two sub-arrays 
+
+	- if it has four elements, you pivot twice, so that it'll have two pivot points 
+
+	[33, 10, 15, 7]
+
+	[10, 15, 7] [33] []
+
+	[10, 15, 7] [33] []
+
+	[7] [10] [15]
+
+	quicksort([7, 10, 15,]) + [33] + quicksort([])
+
+	[7,10,15,33]
+
+	code for quicksort 
+
+	def quicksort(array):
+
+		if len(array) <2: # base case: arrays with 0 or 1 element are already sorted
+			return array
+		else: 
+			pivot = array[0] # recursive case 
+			less = [i for i in array[1:] if i <= pivot] # sub-array of all the elements less than the pivot
+
+			greater = [i for i in array[1:] if i > pivot] # sub-array of all the elements greater than the pivot 
+
+			return quicksort(less) + [pivot] + quicksort(greater) # appending the arrays together to form the sorted array
+
+	print(quicksort([10,5,2,3]))
+
+
+
+	Big O notation revisited 
+
+	Merge sort is always O(n log n) whilse quicksort is mostly O(n log n) and is sometimes O(n^^2) so sometimes quicksort is slow. Why shouldn't we always use merge sort?
+
+	- Usually ignore the constant at the beginning of a formula for the Big O notation because it doesn't make much difference when doing calculations when iterating through large datasets. 
+		- But sometimes the Constant can make a difference. 
+		
+		- Quicksort versus Mergesort is an example of the constant making a difference 
+		
+		- Quicksort has a smaller constant than mergesort, so if they're both O(n log n) Quicksort will be faster
+
+		- Quicksort also hits average case way more often than worst case. 
+
+	- Average case vs worst case 
+
+		- worst case scenario for quicksort is to pivot on the first element, it's better to pick somewhere in the middle as the partition 
+
+		- best case scenario is also the average case 
+
+		- one of the fastest, also very good example of divide and conquer 
+
+
+	- Exercises 
+
+		- 4.5 
+
+			- it would take O(n) amount of time to print each element in an array as it has to touch every item to print it. 
+
+		4.6 
+			- Doubling the value of an array would probably be an example of O(n) as you want to go through and double everything 
+
+		4.7
+			- it would be an exmple of O(1) since you're just selecting one thing 
+
+		4.8 
+			- O(n2) 
+			- creating a multiplication table with all the elements in the array so if your array is 2, 3, 7, 8, 10, you first multiply every element by 2, then by 3, then by 7, and so on. 
+
+			def multiplicationTable (arr, multi, index=1):
+
+			if len(arr) <= 2: 
+				return arr
+
+			else: 
+				multi = multi * arr[index]
+				return multiTable(arr, multi, index+1)
+			return [multi*val for val in arr]
+
+			print(multi([2,3,7,8,10], 2))
