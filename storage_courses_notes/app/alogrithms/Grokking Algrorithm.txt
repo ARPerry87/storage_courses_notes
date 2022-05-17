@@ -503,3 +503,112 @@ Chapter 6
 
 Chapter 7 
 
+Dijkstra's algorithm 
+
+	- Dijkstra's algorithm has 4 steps 
+		- Find the cheapest node. This is the node you can get in the leas amount of time. 
+		- Check whether there's a cheaper path to the neighbors of this node. If so, update their costs. 
+		- Repeat until you've done this for every nodei n the graph. 
+		- Calculate the final path. 
+
+		- When you work with Dijkstra's algorithm, each edge has a weight. A graph with weights, is a weighted graph, while one without weights is an unweighted graph. 
+
+		- Unweighted graphs use breadth first search. 
+
+		- Weighted graphs use Dijkstra's 
+
+
+		- Using this algorithm you follow along the weighted edges to find the shortest path, this however doesn't always mean the aboslutely shortest as with unweighted graphs, as it's attached to numbers. 
+			- This typically more has to do with the shortest path in relation to the shortest path in relation to say how fast can you get to work along a route or trading for a piano
+
+		- Can't use Dijkstra's algorithm if you have negative weights it breaks the algorithm 
+
+		The way to find the shortest with weighted negatives with the Bellman-Ford algorithm, but it's out of scope for the book. 
+
+
+		- Code Examples 
+
+		graph["start"] = {}
+		graph["start"]["a"] = 6
+		graph["start"]["b"] = 2
+
+		graph["a"] = {}
+
+		graph["a"]["fin"] = 1
+
+		graph["b"] = {}
+		graph["b"]["a"] = 3
+		graph["b"]["fin"] = 5
+
+		graph["fin"] = {} #the finish node doesn't have any neighbors
+
+		- now you need a hash table to store the cost for each node 
+			- The cost of a node is how long it takes to get to that node from the start
+			- you don't know how long it takes to get to the finish so you put down ininity  
+
+
+				infinity = float(“inf”)
+				costs = {}
+				costs[“a”] = 6
+				costs[“b”] = 2
+				costs[“fin”] = infinity
+
+		- we also need a hash table for the parents 
+
+		parents = {}
+		parents[“a”] = “start”
+		parents[“b”] = “start”
+		parents[“fin”] = None
+
+		Finally need an array to keep track of all the nodes we've already proccessed so we don't process a node more than once
+
+		processed = []
+
+
+	Full Code: 
+
+	node = find_lowest_cost_node(costs) #find the lowest cost node that you haven't processed yet 
+
+	while node is not None: # if you've processed all the nodes this loop is done 
+
+		cost = costs[node] 
+		neighbors = graph[node] 
+		for n in neighbors.keys():# go through all the neighbors of this node 
+
+			new_cost = cost + neighbors[n] 
+			if costs[n] > new_cost: # if it's cheaper to get to this neighbor by going through this node 
+
+				costs[n] = new_cost# update the cost for this node 
+
+				parents[n] = node #this node becomes the new parent for this neighbor 
+
+		processed.append(node) #mark the node as processed
+
+		node = finde_lowest_cost_node(costs) #find the next node to process and loop
+
+		Now for the function version: 
+
+		def find_lowest_cost_node(costs): 
+			lowest_cost = float("inf")
+			lowest_cost_node = None 
+			for node in costs: # go through each node
+				cost = costs[node]
+					if cost < lowest_cost and node not in processed: # if it's the lowest cost so far and hasn't been processed yet
+
+						lowest_cost = cost #set it as the new lowest cost node
+
+						lowest_cost_node = node 
+			return lowest_cost_node 
+
+
+		- maximum time of D algorithm is n^^2 
+
+		- perform relaxation on edges, when you are on one edge, look at other edges, which edge is smaller, relax it 
+			- Only relax it (update it) if it's shorter 
+			- Using the table to update for the shortest path for updating the smallest vertex 
+
+		- it's a greedy algorithm and it touches everything 
+
+		- Unnecessary processing sometimes 
+
+		
