@@ -611,4 +611,92 @@ Dijkstra's algorithm
 
 		- Unnecessary processing sometimes 
 
-		
+
+
+Chapter 8 
+
+- Greedy algorithms 
+	- They're easy, each step they pick the optimal move 
+	- Sometimes perfect is the enemy of good enough 
+	- Approximation algorithm 
+		- pick the station that covers most states that haven't been covered, it's ok if a station covers states that have been covered already 
+		- repeat until all states are covered 
+
+		- When calculating an exact solution, an approximation solution will do 
+
+		- Judged by how fast they are, how close they are to the solution 
+
+		- A set union means combine both sets 
+		- a set intersection means find the items that show up in both sets 
+		- a set difference means subtract the items in one set from the items in the other set 
+
+		fruits = set(["avocado", "tomato", "banana"])
+		veggeies = set(["beets", "carrots", "tomato"])
+		fruits | veggies #this is a set union 
+		set(["avocado", "beets", "carrots", "tomato", "banana"])
+		fruits & veggies # this is a set intersection 
+		set(["tomato"])
+		fruits - veggies # this is a set difference 
+		set(["avocado", "banana"])
+		veggies - fruits 
+		set(["avocado", "banana"])
+
+	code for loop for looking for station with a greedy algorithm: 
+
+	states_needed = set(["mt", "wa", "or", "id", "nv", "ut", ca], "az")
+	stations = {}
+	stations["kone"] = set(["id", "nv", "ut"])
+	stations[“ktwo”] = set([“wa”, “id”, “mt”])
+	stations[“kthree”] = set([“or”, “nv”, “ca”])
+	stations[“kfour”] = set([“nv”, “ut”])
+	stations[“kfive”] = set([“ca”, “az”])
+	final_stations = set()
+
+	
+
+	Full code of the while loop: 
+
+	while states_needed:
+		best_station = None
+		states_covered = set()
+		for station, states in stations.items():
+			covered = states_needed & states
+			if len(covered) > len(states_covered):
+				best_station = station
+				states_covered = covered
+	states_needed -= states_covered
+	final_stations.add(best_station)
+
+
+	- NP complete problems 
+
+	- Traveling salesman, adding more edges increases the routes by magnitudes. It's a factorial function. 
+	- NP problems are traveling sales person problems 
+
+	- NP Complete to 
+		- find something that fits most of the criteria of a problem 
+		- repeat until the solution is fulfilled 
+
+	- Ways to tell the difference if it's NP Complete 
+		- Slows down with lots of items 
+		- All combinations of X 
+		- Do you have to calculate every possible version of x 
+		- Involves a sequence 
+		- Your problem involves a set and it's hard to solve 
+		- Can you restate your problem as the set covering problem or the traveling sales person problem? 
+
+	Exercises 
+		- 8.6 
+			No it's just a Breadth First Algorithm 
+		- 8.7 
+			- Yes
+		- 8.8 
+			- Yes? 
+
+	Recap 
+		- Greedy algorithms optimize locally, hoping to end up with global optimum 
+		- NP-complete problems have no known fast solution 
+		- If you have an NP-complete problem your best bet is to use an approximation algorithm 
+		- Greedy algorithms are easy to write and fast to run, so they make good approximation algorithms 
+
+	
