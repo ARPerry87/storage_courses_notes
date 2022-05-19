@@ -699,4 +699,87 @@ Chapter 8
 		- If you have an NP-complete problem your best bet is to use an approximation algorithm 
 		- Greedy algorithms are easy to write and fast to run, so they make good approximation algorithms 
 
-	
+
+Chapter 8 
+
+Dynamic Programming 
+
+The knapsack problem 
+	- If you were to calculate the problem by touching each thing, and trying out each combo it would take O(2^^n) which is horrendous. Enter in dynamic programming. 
+
+		- Dynamic programming starts by solving subproblems and building up to solving the larger problem. 
+
+		For the knapsack problem, you start by solving the problem for smaller knapsacks and then working up to solving the original issue. 
+
+		- Every dynamic programming algorithm starts with a grid. for the knapsack problem it has the rows for the items and the columns for the pounds the knapsack can hold. 
+		- The grid starts out empty and fill each cell of the grid 
+
+		- You fill in the grid with each time an item fits the description of the problem-for the example, the guitar is one pound, so it'll fit every box since the other items aren't available at the moment 
+
+		- At every row you can steal the item in that row, or the items in the rows above it, you can't choose to steal the laptop right now, but you can choose to steal the steroe and or the guitar. 
+			- the stereo is heavier than one pound, so it doesn't fit into the first slot, so the value of the guitar, and the guitar itself, gets pulled down into the stereo slot of the graph. This happens for the next two slots where the maximum weight doesn't match the weight of the stereo 
+			- Keep going until the stereo fits the critera to become the largest, which fills the fourth box. 
+			- This process repeats with every item and column until the entire grid is filled in
+			- where it gets interesting is that for the 4lbs, instead of bringing just the stereo down, you have 4 lbs: 
+				- The guitar is 1lbs, and the laptop is 3lbs, and their combined value is more than the stereo 
+		- Max value can never decrease as we're sorting the current max estimate, the estimate can never get worse than it was before. 
+
+		- Order of columns vs rows doesn't make a difference for the knapsack problem but it does for others 
+	- This method cannot handle fine granularity, you either take the item or you don't. 
+	- Solve instead with a greedy algorithm 
+	- DYnamic programming only works when each subproblem is discrete, when it doesn't depend on other subproblems 
+
+	- Longest common substring 
+		- Dynamic programming is useful when your trying to optimize something given a constraint 
+		- Every dynamic solution involves a grid 
+		- values in the cells are usually what you're trying to optimize 
+		- each cell is a subproblem 
+
+		- Typing a word and mispelling it, which word would come closest to the word that someone meant to put?
+
+		- What are the value of the cells? 
+		- How do you divide the problem into subproblems 
+		- What are the axes of the grid 
+		- In dynamic programming you're trying to maximize something. 
+
+	- code for matching 
+
+	if word_a[i] == word_b[j]: # letters match  
+		cell[i][j] = cell[i-1][j-1] #you decrement and take that letter out the need to match
+	else: 
+		cell[i][j] = 0 # the letters don't match 
+
+	- note that the final solution might not always be int he last cell 
+
+	- longest common subsequence 
+
+	if word_a[i] == word_b[j]: 
+		cell[i][j = cell[i-1][j-1] + 1 #the letters match 
+	else: #the letters don't match
+		cell[i][j] = max(cell[i-1][j], cell[i[j-1]])
+
+	Aka if the letters don't match pick the larger, if they do match, this value is value of the top left neighbor + 1 
+
+
+Chapter 10 
+
+- k-nearest neighbors 
+
+	- Looking at nearest neighbors to a data point to determine if something is one thing or another.
+	- KNN is an algorithm for classification 
+	- If you're trying to classify something, try KNN frist 
+
+	- Graphs for recommendations based on movie tastes will work similarly, for say users that like movies of a certain genre, then another user that tends to like the same genre, will also like a movie. 
+
+	- Feature extraction 
+		- Features are the aspects you'll use to compare things. For grapefruits and oranges it's the redness, and size, on a graph, from 1 to 5 respectively. 
+		- This can also be used for users, as a rating system on how much they like categories or movies. 
+			- you can then use the pythagorean formula to calculate the difference between people or fruits 
+		- To see how she might rank something you'll take a random sampling of people from around a person, and take their average, which is called regression 
+
+	- Intro to machine learning 
+		- OCR stands for optical character recognition 
+		- OCR algorithms measure lines, points, and curves to look for similar images that they've stored, such as a 3, a 7, etc. 
+		- Machine learning algorithms have training steps where they must be trained before the task, where it's shown that it has to do. 
+		- Spam Filters are an example as well, and are built on the Naive Bayes Classifier. 
+		
