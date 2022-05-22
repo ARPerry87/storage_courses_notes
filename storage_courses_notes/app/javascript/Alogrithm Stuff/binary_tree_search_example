@@ -1,0 +1,37 @@
+ptr = 1 
+iPosition = iPosition +1 
+Data(iPosition) = NewData 
+
+if iPosition = 1 Then 
+	LeftPoint(iPosition) = 0
+	RightPoint(iPosition) = 0
+Else
+	Do Until ptr = 0 
+		if NewData > Data(ptr)Then
+			if RightPointer(ptr) = 0 Then 
+				RightPointer(ptr) = iPosition 
+				ptr = 0 
+			Else 
+				ptr = RightPointer(ptr)
+			End If 
+		ElseIf NewData < Data(ptr) Then 
+			If LeftPointer(ptr) = 0 Then 
+				LeftPointer(ptr) = iPosition
+				ptr = 0
+			else 
+				ptr = LeftPointer(ptr)
+			End If 
+		End If 
+	Loop
+End If
+
+Preorder traversal pseudocode 
+
+Preoder_Traverse(p)
+OUTPUT Data(p)
+IF LeftPoint(p) <> 0 THEN
+	CALL Preorder_Traverse(LefPoint(p))
+END IF 
+IF RightPoint(p) <> 0 THEN 
+	CALL Preorder_Traverse(RightPoint(p))
+ENDIF 
