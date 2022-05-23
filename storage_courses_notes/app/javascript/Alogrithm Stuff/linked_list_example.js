@@ -147,7 +147,7 @@ getAt(index){
 
 clearList(){
 
-	this.head= null;
+	this.head = null;
 	this.size = 0;
 
 }
