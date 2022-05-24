@@ -1,0 +1,131 @@
+creating hash maps to create an adjacency list in order to populate a graph to create the graph algorithm 
+
+adjacency list 
+
+{
+	a: [b, c], 
+	b: [d], 
+	c: [e], 
+	d: [],
+	e: [b],
+	f: [d]
+}
+
+here you write all the neighbors in the graph for the graph, so for a, the neighbor of the directed graph is c and b, for b, it's d, for it's e, as these are the directions that point towards the things. 
+
+even as a node has no neighbors it should still appear as a key, even if it has no neighbors (it had no outgoing direction) 
+
+depth first traversal on this graph 
+
+	- If we commit to depth first traversal, we commit to going 
+		- B, then D
+		- Then go back, and go to C, then E, then to D, and then we exhaust and can't to go F and we've exhausted DFS 
+
+
+	So for DFS our first sequence is 
+		- a, b, d
+
+
+BFS (breadth first traversal)
+
+	- a, b, c first instead, so for this you exhaust the nodes around the root instead versus around the edge 
+
+
+Depth first you explore in one direction as far as possible before exhausting it 
+
+Breadth first you explore all immediate neighbors first and evenly 
+
+DFS uses stack 
+
+BFS uses Queue 
+
+
+
+New Hash Table 
+
+{
+	a: [b, c],
+	b: [d],
+	c: [e],
+	d: [f],
+	f: []
+}
+
+So when doing this, imagine when doing a print function, going through it as a stack and popping the top of it. You would have to go through it in a single line from: 
+
+a to b then to c, then to d, then to e, then to f, but then you would have to come up to change directions (as f has no neighbors so you would have to change directions) to come back up to c, in order to print out to e, so here is the full list: 
+
+a, b, c, d, f, c, e 
+
+
+For BFS for this Hashtable 
+
+For breadth first you work off of queueing and dequeuing, so you work off of putting neighbors of a node in and out of a queue. So you would start off with A's neighbors to the back of the queue, which would be b, and c, then add b's neighbors, and so on and so forth, which would end up with a sorted queue  
+
+a, b, c, d, e, f 
+
+Implimented with JS! 
+
+DFS Javascript 
+
+/*
+/*const depthFirstPrint = (graph, source) => {
+
+	const stack = [source];
+
+	while(stack.length > 0){
+
+		current = stack.pop();
+		console.log(current);
+
+		for (let let neighbor of graph[current]) {
+			stack.push(neighbor);
+		}
+	}
+};
+*/
+
+//Now for recursion since this ^^ was iterative and iterative can take up a lot of space 
+
+/*const depthFIrstPrint = (graph, source) => {
+
+	console.log(source);
+	for(let neighbor of graph[source]){
+		depthFirstPrint(graph, neighbor);
+
+	}	
+
+};
+*/
+//because there's implicitly an empty case a recurisve method works as a base case 
+//Commenting all this out so that we can work on BFS now this all works 
+
+BFS Javascript 
+
+
+const breadthFirstPrint = (graph, source) = >{
+	const queue = [source]; 
+	while(queue.length > 0) {
+		const current = queue.shift();
+		console.log(current);
+		for (let neighbor of graph[current]) {
+			queue.push(neighbor);
+		}
+	}
+};
+
+const graph = {
+	a: :['b', 'c'],
+	b: ['d'],
+	c: ['e'],
+	d: ['f'],
+	e: [],
+	f: []
+
+};
+
+//depthFirstPrint(graph, a); //abdfce
+
+breadthFirstPrint(graph 'a'); 
+
+
