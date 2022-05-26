@@ -1,0 +1,67 @@
+AWS Notes 
+	- AWS Business Course 
+		- AWS Leadership principles 
+			- Customer obsession 
+			- Enabling and collab with partners 
+			- Learn and be curious 
+			- Earn trust 
+			- dive deep 
+			- invent and simplify 
+			- think big 
+			- bias for action 
+			- drive results 
+		- What makes AWS Unique 
+			- AWS has been in the business since 2006 serving large and small businesses making it the oldest cloud provider 
+			- Has more than 175 services and continues to extend the platform, from cloud computing, core computing services, business process services, databases, and analytices to machine lerning and IoT. 
+			- Pace of Inovation has more than 1927 new customer driven featuers in 2018 up from 1430 since 2017
+			- Has a presence in 69 zones in 22 geographic areas around the world 
+			- Amazon culture has long-term view on customer obsession, 79 price reductions to date, AWS centers its roadmap innovations around customer requests. 
+			- AWS partner network now has tens of thousands of consulting and technology partners 
+			- Security protecing customer data is the number one priority at AWS, AWS has 58 compliance certifications 
+			- AWS offers customers the broadest set of hybrid capabilities of any cloud provider, offering either on premises, in the cloud, or a hybird. 
+		- Enterprise leadership 
+			- Over 12 yeras leadership
+			- Certified by other companies like Gartner and recognized as IaaS 
+			- Customer obsession 
+		- Service Breadth and Depth 
+			- Refers to the amount of prodcuts and services 
+				- E.G. 
+					- Analytics 
+					- Application Integration 
+					- Ar and Vr 
+					- AWS cost managment 
+					- AWS marketplace 
+					- Blockchain
+					- buisness applications 
+					- compute 
+					- customer engagement 
+					- database
+					- desktop and appstreaming 
+					- developer tools 
+					-game tech
+					- interent of things 
+					- machine learning 
+					- management and governance 
+					- media services 
+					- migration and transfer 
+					- mobile 
+					- network and content delivery 
+					- robotics 
+					- satellite 
+					- security, identity, and compliance 
+					- storage 
+				- Have developed the broadest amount of services 
+		- AWS allows companies to set up the cloud within minutes and set up a presence around the world. The only provider that has high availablity natively supported in its infrustructer. 
+
+		- 22 regions 
+		- How do hybrid capabilityes help partners 
+			- Almost every AWS customer with an on-premises infrastrucre is running a hybrid arechitecture. 
+			- AWS offers seamless integration with an existing on-premises data centers. 
+			- Easily run VMware workloads on AWS with seamless deployment and management. 
+
+		- AWS Security and compliance 
+			- Responsible for security of the cloud 
+				- Compute storage database networking 
+					- AWS Global Infrastructure 
+						- Regions Availability zones Edge locations 
+		

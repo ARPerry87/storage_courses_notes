@@ -129,3 +129,59 @@ const graph = {
 breadthFirstPrint(graph 'a'); 
 
 
+
+
+New Hash Table 
+
+{
+	f: [g, i],
+	g: [h],
+	h: [], 
+	i: [g, k],
+	k: []
+}
+
+
+JS has path solution 
+
+
+Breadth first
+
+
+const hasPath = (graph, src, dst) => {
+	const queue - [src]; 
+
+	while(queue.length > 0) {
+		const current = queue.shift();
+		
+		if (current ===dist) return true;
+		
+		for (let neighbor of graph[current]) {
+			queue.push(neighbor);
+		}
+	}
+
+	return false
+};
+
+
+
+
+/*
+
+Depth first
+
+const hasPath = (graph, src, dst) => {
+	if (src === dst) return true;
+
+	for(let neighbor of graph[src]) {
+		if ( hasPath(graph, neighbor, dst); === true){
+			return true;
+		} 
+	}
+
+	return false; //we shouldn't return false until down here because otherwise it'll become cyclic 
+};
+
+*/
+
