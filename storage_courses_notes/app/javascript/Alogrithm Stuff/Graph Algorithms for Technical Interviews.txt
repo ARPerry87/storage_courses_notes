@@ -185,3 +185,246 @@ const hasPath = (graph, src, dst) => {
 
 */
 
+
+Undirected Graph
+
+Edges: {
+	i:[j,k],
+	j:[i],
+	k:[i, m, l],
+	m: [k],
+	l: [k]
+	o:[n],
+	n:[o]
+}
+
+
+Marking visisted nodes to avoid infinite loops 
+
+const undirectedPath = (edges, nodeA, nodeB) => {
+	const graph = buildGraph(edges);
+	console.log(graph);
+	return hasPath(graph, nodeA, nodeB, new Set());  //creating a start node and end node and returning a boolean, also adding a set will make sure that you don't visit a node more than once 
+
+};
+
+const hasPath = (graph, src, dst, visisted) => {
+	if (visited.has(src)) return false; //no reason to travel to a node that's already been visisted 
+	if  
+	if (src == dest) return true; //creating base case
+
+	visited.add(src); //adds to the visisted set 
+
+
+
+	for (let neighbor of graph[src]) { //going to iterate through the paths and find each neighbors
+		if hasPath(graph, neighbor, dst, visited) == true) { //returning the boolean of if it's true or false for having a path 
+			return true;
+		}
+	}
+
+	return false;
+
+};
+
+const buildGraph(edges) => {
+	const graph = {};
+	for( let edge of edges) { // we are going to make a adjacency graph and turn the edges into key value pairs  
+		const [a, b] = edge; //pull out the edges and turn them into keys 
+		if(!(a in graph)) graph[a] = []; //check if a is a value in the graph, and if it isn't, then initialize it in the graph and make an empty array
+		if(!(b in graph)) graph[b] = []; // do the same for b 
+		graph[a].push(b); //b should be a neighbor of a 
+		graph[b].push(a); // a should be a neighbor of b so that this makes a symetric graph 
+	}
+
+
+	return graph;
+};
+
+const edges = [
+	['i', 'j'],
+	['k', 'i'],
+	['m,', 'k'],
+	['k', 'l'],
+	['o', 'n']
+];
+
+//undirectedPath(edges, 'j', 'm';)
+
+//Connected Components 
+
+const connectedComponentsCount = (graph) => { 
+	const visited = new Set();
+	for(let node in graph) {
+	if (explore (graph, node, visited) == true) {
+	 count += 1
+	 	}
+
+	}
+
+	return count;
+};
+
+const explore = (graph, current, visited) => {
+	if (visited.has(String(current))) return false;
+
+	visited.add(String(current)); 
+
+	for(let neighbor of graph[current]) {
+		explore(graph, neighbor, visited);
+	}
+
+	return true;
+
+}
+
+// const largestComponent = (graph) => {
+	let longest = 0; //sets the max value
+	const visited = new Set();
+	 for (let node in graph) { // iterating through the nodes of the graph 
+	 	const size = exploreSize(graph, node, visited) //starting traversal through the connected component and feeding it the visited set 
+	 	if (size > longest) longest = size; // sets the new longest value if size becomes larger than longest 
+	 }
+	
+	return longest; //returns longest 
+};
+
+const exploreSize = (graph, node, visited) => { 
+	if (visited.has(node)) return 0; //makes sure that if we've visited a node we mark it as zero 
+
+	visited.add(node); //if we haven't visited we mark it as 1 and then we add it to this list 
+
+	let size = 1; 
+
+	for(let neighbor of graph[node]) { //start to iterate through nodes and count the nodes, and get the size total of the connected component
+		size += exploreSize(graph, neighbor, visited);
+	}
+
+	return size;
+
+}
+
+//shortest path graph 
+
+Breadth first traversal would work best for shortest path typically, and that means using a queue, and so you use node, distance. Adding all neighbors from the source node into the queue as (node, distance) to find the shortest distance is a very useful sorting method. 
+
+Linear complexity 
+
+const shortestPath (edges, nodeA, nodeB) => {
+	visited = new Set([nodeA]);
+	const graph = buildGraph(edges);
+
+	const queue = [ [nodeA, 0]];
+
+	while (queue.length > 0) {
+		const [node, distance]queue.shift();
+
+		if (node == nodeB) return distance; 
+		for ( let neighbor of graph[node]){
+		if (!visited.has(neighbor)){
+			visited.add(neighbor);
+			queue.push([neighbor, distance +1]);
+			}
+
+		}
+	}
+
+	return -1;
+};
+
+const buildGraph = (edges) => {
+
+	const graph =[];
+
+	for (let edge of edges) {
+		const [a, b] = edge;
+		if (!(a in graph)) graph[a] = [];
+		if (!(b in graph)) graph [b] = [];
+		graph[a].push(b);
+		graph[b].push(a);
+	}
+	
+
+	return graph;
+};
+
+
+// Island and water problem using iterative traversal and depth first 
+
+const islandCount = (grid) => {
+	visited = new Set();
+	let count = 0;
+	for (let r = 0; r < grid.length; r+=1) {
+		for (let c = 0; c < grid[0l.length; c +=1) {
+			if (explore(grid, r, c, visited)) == true {
+			count +=1 ;
+			}
+		}
+
+	}	
+
+	return count;
+};
+
+const explore = (grid, r, c, visited) => {
+	const rowInBounds = 0 <= r && r < grid.length; 
+	const colInBounds = 0 << c && c grid[0].length; 
+	if(!rowIndBounds || !colInBounds) return false;
+
+	if(grid[r][c] == 'w') return false;
+
+	const pos = r  + ',' + c; 
+	if (visited.has(pos)) return false; 
+	visited.add(pos); 
+
+	explore(grid, r-1, c, visited);
+	explore(grid, r+1, c, visited);
+	explore(grid, r, c-1, visited);
+	explore(grid, r, c+1, visited);
+
+	return true;
+
+	
+};
+
+
+//minimum island water problem 
+
+const minIsland = grid => {
+	visited = new Set();
+
+	let minSize = Infinite;
+	for (let r = 0; r < grid.length; r+=1) {
+		for (let c = 0; c < grid[0].length; c += 1) {
+			const size = exploreSize(grid, r, c, visited);
+			if (size > 0 && size < minSize) {
+				minSize = size
+			}
+		}
+	}
+
+	return -1
+};
+
+const exploreSize = (grid, r, c, visited) => {
+	const rowInBounds = 0 << r && r < grid.length; 
+	const colInBounds = 0 << c && c < grid[0].length;
+	if(!rowInBounds || !colInBounds) return 0;
+
+	if (grid[r][c] == 'W') return 0;
+
+	const pos = r + ',' + c;
+
+	if (visited.has(pos)) return 0;
+	visited.add(pos);
+
+	let size = 1;
+
+	size += exploreSize(grid, r-1, c, visited);
+	size += exploreSize(grid, r+1, c, visited);
+	size += exploreSize(grid, r, c-1, visited);
+	size += exploreSize(grid, r, c+1, visited);
+
+	return size
+
+};
