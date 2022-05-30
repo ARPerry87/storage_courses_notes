@@ -1,0 +1,113 @@
+Creating a binary tree in a very mechanical way with a constructor class, and not a progamatic way: 
+
+class Node {
+	constructor(val){
+		this.val = val;
+		this.left = null;
+		this.right = null;
+	}
+}
+
+const a = new Node('a');
+const b = new Node('b');
+const c = new Node('c');
+const d = new Node('d');
+const e = new Node('e');
+const f = new Node('f');
+
+a.left = b; 
+a.right = c;
+b.left = d; 
+b.right = e; 
+c.right = f
+
+
+// solving for traveling the binary tree  using depth first aka we need to use a stack, with this it'll go a, b, d, e, c, f with a time complexity it'll be o(n)
+
+This is the iterative one 
+
+/*
+class Node {
+	constructor(val){
+		this.val = val;
+		this.left = null;
+		this.right = null;
+	}
+}
+*/
+
+const depthFirstValues = (roots) => {
+	if (root == null) return [];
+
+	const stack = [root];
+	while(stack.length > 0) {
+		const current = stack.pop();
+		console.log(current.val);
+		result.push(current.val);
+
+		if (current.left) stack.push(current.left);
+		if (current.right) stack.push(current.right);
+	}
+	
+	return results	
+};
+
+
+Now for the recursive version (call stack gives same type of ordering)
+
+const depthFirstValues = (root) => {
+	if (root == null) return []; 
+
+	const leftValues = depthFirstValue(root.left);
+	const rightValues = depthFirstValue(root.right);
+	return [root.val, ...leftValues, ...rightValues];
+
+};
+
+// Breadth First Binary Tree traversal 
+
+const breadthFirstValues = (root) => {
+	if (root == null) return [];
+
+	const values = [];
+	const queue = [root];
+
+	while (queue.length > 0) {
+		const current = queue.shift();
+		values.push(current.val);
+		if (current.left != null ) queue.push(current.left);
+		if (current.right != null) queue.push(current.right);
+
+	}
+	return values;
+};
+
+//tree includes problem 
+
+const treeIncludes = (root. target) => {
+	if (root == null) return false; //return boolean instead of an empty array
+
+	const queue = [root];
+	while (queue.length > 0) {
+	const current = queue.shift();
+	console.log(cururent.val);
+	if (current.val == target) {
+		return true; 
+	}
+
+	if (current.left) queue.push(current.left);
+	if (current.right) queue.push(current.right);
+	}
+
+	return false
+};
+
+
+//now for recursion 
+
+const treeIncludes = (root, target) => {
+	if (root == null) return false; // can't find target in empty tree
+	if (root.val == target) return true; // if the value is found in the tree at all return true 
+	return treeIncludes(root.left, target) || treeIncludes(root.right, target); // uses recursion so that if the target is found in the right subtree OR the left subtree, return TRUE 
+};
+
