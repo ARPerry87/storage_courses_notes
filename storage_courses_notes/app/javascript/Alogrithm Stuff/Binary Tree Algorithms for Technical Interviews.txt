@@ -111,3 +111,86 @@ const treeIncludes = (root, target) => {
 	return treeIncludes(root.left, target) || treeIncludes(root.right, target); // uses recursion so that if the target is found in the right subtree OR the left subtree, return TRUE 
 };
 
+// adding all nodes together recursively 
+
+const treeSum = (root) => {
+	if (root == null) return 0; // doesn't evaluate a tree of 0 
+	// starting at the root, we go down to the next sub tree, then we add the children, and return the totals 
+
+	return root.val + treeSum(root.left) + treeSum(root.right); // works for all trees of all shapes and sizes
+};
+
+now for iterative version 
+
+const treeSum = (root) => {
+	if (root == null) = return 0;
+
+	const queue = [root];
+	let totalSum = 0
+	while (queue.length > 0) {
+		const current = queue.shift();
+		totalSum += current.val; // iterating over the vaue of the current queue 
+		if (current.left != null) queue.push(current.left); //push adds to the back
+		if (current.right != null) queue.push(current.right); 
+
+	}	
+
+	return totalSum
+
+};
+
+// tree min value problem 
+
+const treeMinValue = (root) => {
+	let smallest = Infinity;
+	const stack = [root];
+
+	while(stack.length > 0) {
+		const current = stack.pop();
+		if (current.val < smallest ) smallest = current.val;
+
+		if (current.left != null) stack.push(current.left);
+		if (current.right != right) stack.push(current.right);
+	}
+
+	return smallest;
+
+};
+
+// if you want to use a queue instead of a stack 
+
+const treeMinValue = (root) => {
+	let smallest = Infinity;
+	const queue = [root];
+
+	while(queue.length > 0) {
+		const current = shift.pop(); //this runs in O(n^2) 
+		if (current.val < smallest ) smallest = current.val;
+
+		if (current.left != null) queue.push(current.left);
+		if (current.right != right) queue.push(current.right);
+	}
+
+	return smallest;
+
+};
+
+// recursive version 
+
+const treeMinValue = (root) => {
+	if (root = null) return Infinity; 
+	const leftMin = treeMinValue(root.left);
+	const rightMin = treeMinValue(root.left); 
+	return Math.min(root.val, leftMin, rightMin);
+
+};
+
+// Max root to leaf path sum 
+
+const maxPathSum = (root) => {
+	if (root == null) return -Infinity;
+	if (root.left == null && root.right == null) return root.val;
+	const maxChildPathSum = Math.max(maxPathSum(root.left), maxPathSum(root.right));
+	return root.fal + maxChildPathSum
+};
+
