@@ -1,0 +1,62 @@
+Dynamic programming is solving things in small bits before going at the entire problem 
+
+Part 1. Memoization 
+Part 2. Tabulation 
+
+Fibonnaci memoization 
+
+write a function fib(n) takes in a number as an argument the fucntion should return the n-th number of the fib sequence. 
+
+const fib = (n) => { 
+	if (n <= 2) return 1;
+	return fib(n-1) + fib(n-2);
+};
+
+fib(6);
+fib(7); 
+fib(8);
+
+If you give it a big enough value to n it's slow so to improve the implementation you need to improve it's Big O 
+
+fib of 7 is actually doing 1, 2 and adding those two together, so it's 3, then moving it along, and building it into a big tree of the fibannoci structure into a number and it'll take up a lot of memory because they're all returning their base cases 
+
+const dib = (n) = > { 
+	if (n <= 1)
+	dib(n-1); 
+	dib(n-1);
+};
+
+this is O(2^n)time complexity because it's going down a tree from a tree that goes 1 layer, then 2, then 4, then 8, then 16, with a space complexity of O(n)
+
+const lib = (n) => {
+	if (n <=1 ) return;
+	lib(n-2);
+	lib(n-2);	
+};
+
+O(2^n)
+O(n)
+
+Fibonnaci fits between these two, since they all have exponential time complexity, and an N space complexity
+
+fib(50) would take 2^50 steps 
+
+it would be a massive number 
+
+If we answer the question for a repeating subtree if we see a repeating subsection of a tree, we can answer the problem and get rid of larger sections of the tree. 
+
+Let's get to the code: 
+
+
+//memoization 
+// js object, keys will be arg to fn, value will be return value 
+
+const fib = (n, memo={}) => { 
+	if (n in memo) return memo[n];
+	if (n <= 2) return 1;
+	memo[n] = fib(n-1, memo) + fib(n-2, memo);
+	return memo[n];
+};
+
+console.log(fib(6)) //8
+console.log(fib(7)) //13
