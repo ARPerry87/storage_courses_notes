@@ -55,8 +55,101 @@ const fib = (n, memo={}) => {
 	if (n in memo) return memo[n];
 	if (n <= 2) return 1;
 	memo[n] = fib(n-1, memo) + fib(n-2, memo);
-	return memo[n];
+	return memo[n]
 };
 
 console.log(fib(6)) //8
 console.log(fib(7)) //13
+
+const gridTraveler = (m, n, memo={}) => {
+	const key = m + ',' + n;
+	if (key in memo) return memo[key];
+	if (m === 1 && n ===1 ) return 1;
+	if (m === 0 || n === 0) return 0;
+	memo[key] = gridTraveler(m - 1, n, memo) + gridTraveler(m, n-1, memo);
+	return memo[key]
+
+};
+
+console.log(gridTraveler(1,1));
+console.log(gridTraveler(2,3));
+console.log(gridTraveler(18,18))
+
+With gridTraveler without memoization complexity of time like with fib it's O(2^n+m) 
+
+
+
+1. Make it work
+	. Visialize the problem as a tree 
+	. Implement that tree using a recursion 
+	. Test it 
+
+2. Make it effecient 
+	. Add a memo object 
+	. Add a base case to return memo values 
+	. Store return values into the memo 
+
+
+canSum as dynamic programming 
+
+If we're doing an array and looking for a specific sum within that array, say 7, and we're given an array of numbers, imagine the specific sum you want as a tree, and the array that you are given as the nodes. If you're traveling back from a parent node, the sum that you need has to be subtracted from the parent node, so it would be
+
+7 - 5 = 2 - we can't use this node as it'll give us a negative value 
+7 - 3 = 4 - this can give us a positive value 
+7 - 4 = 3 - so will this 
+7 - 7 = 0 - this has no further choices for us either 
+
+from the array of [5, 3, 4, 7]
+
+The 7, the 3, and 4 all come up with 0s and provide great base cases and should return true, but those that don't provide 0s and can't traverse further, aren't good base cases, and should return false. 
+
+So 3 and 4 will return true, 7 will return true, and the entire tree will return true, while the 5 will return false. 
+
+Let's jump into code! 
+
+const canSum = (targetSum, numbers, memo={}) =>{
+	if (targetSum in memo) return memo[targetSum];
+	if (targetSUm ===0) return true; 
+	if (targetSum < 0 ) return false;
+
+	for (let num of numbers) {
+		const remainder = targetSum - num; 
+		if (canSum(remainder, numbers, memo) === true) {
+			memo[targetSum ] = true;
+			return true;
+
+		}
+
+	}
+
+	memo[targetSum] = false;
+	return false;
+
+};
+
+
+howSum in this one instead of true and false we want to print out which numbers can get you to the sum defined in an array. So if you want a 7 and are given an input of [5,3,4,7] then you would want to return the [3,4] or [7] because of the 0s being returned as the base case. 
+
+const howSum = (targetSum, numbers, memo={}) => {
+ if (targetSum in memo) return memo[targetSum];
+ if (targetSum === 0) return [];
+ if (targetSum < 0) return null;
+
+ for (let num of numbers) {
+ 	const remainder = targetSum - num;
+ 	const remainderRes = howSum( remainder, numbers, memo);  
+ 	if (remainderRes !== null) {
+ 		memo[targetSum] = [...remainderRes, num, memo];
+ 		return memo[targetSum] 
+ 	} 
+ 	
+ }	
+
+ memo[remaindRes] = null;
+ return null;
+
+};
+
+
+bestSum problem the smallest or shortest way to reach a given sum, aka optimize the solution from the start, so if given an array of [2,3,4,5] and given the sum of 5 you want to give it the lone [5] as the solution 
+
