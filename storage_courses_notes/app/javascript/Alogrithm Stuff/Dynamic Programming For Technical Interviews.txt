@@ -221,3 +221,151 @@ const countConstruct = (target, wordBank, memo={}) => {
 	return totalCount;
 
 };
+
+
+allConstruct that accepts a target string an array of strings, the functin should return a 2d array containing all the ways that the target can be constructed by contatenating elmenets of the array. 
+
+allConstruct purple [purp, p, ur, le, purpl] - [[purp, le], [p, ur, p, le]] 
+
+make an array of arrays 
+
+if it's not possible to return anything return an empty array 
+
+const allConstruct = (target, wordBank, memo={}) => {
+	if (target in memo) = memo[target];
+	if (target === '') return [[]];
+
+	const res = [];
+
+	for (let word of wordBank) {
+		if (target.indexOf(word) === 0) {
+			const suffix = target.slice(word.length);
+			const suffixWays = allConstruct(suffix, wordBank, memo);
+			const targetWays = suffixWays.map(way => [word, ...way]) //grabbing the word suffix that we want and putting it at the front of the subarray 
+
+			res.push(...targetWays);
+		}
+
+	}
+
+
+	memo[target] = res;
+	return res;
+
+};
+
+
+let's refine the fib function with tabulation 
+
+tabulation uses a table instead of a tree and each step adds two indexes to the step 
+
+const fib = (n) => {
+	const table = Array (n + 1).fill(0);
+	table[1] = 1
+	for(let i = 0; i <= n; i++) {
+		table[i +1] += table[i];
+		table [i+2] += table[i];
+	}
+	return table[n];
+};
+
+
+gridTraveler with tabulation 
+
+for tabulation for this problem it's similar to the knapsack problem so the tabulation is basically the knapsack problem 
+
+const gridTraveler = (m, n) => {
+	const table = Array(m + 1)
+	.fill()
+	.map(() => Array(n + 1).fill(0));
+	table[1][1] = 1;
+	for (let i = 0; i <= m; i++) {
+		for (let j = 0; j <= n; j++) {
+			const current = table [i][j];
+			if (j +1 <= n) table[i][j+1] += current; 
+			if (i +1 <= m) table[i+1][j] += current;
+		}
+	}
+
+	return table[m][n];
+
+};
+
+
+tabulation recipe 
+
+- visuzalize the problem as a table 
+- size the table based on the inputs 
+- initalize the table with default values 
+- iterate through the table 
+- fill further positions based on the current position 
+
+
+canSum tabulation 
+
+we start off with the target sum as the total array, and then have F as the seed values in the array. Now 0 is the seed value to begin with. 
+
+If you start with 7 for array [5,3,4] it's a true for canSum 
+
+So since 0 is replaceable, 5 is as well, 4, and 3 should all be changed to T while everything else remains at F at the first iteration from index 0. Then you move one step over. There is no 1 in the array, so you cannot modify, and move another step. 
+
+This eventually turns all indexes to T by the time you reach index 3. 
+
+m = targetSum 
+n= numbers.length 
+
+O(mn) time 
+O(m) space 
+
+
+code time 
+
+
+
+const canSum = (targetSum, numbers) => {
+	const table = Array(targetSum + 1).fill(false);
+	table[0] = true;
+
+	for (let i = 0; i <= targetSum; i++) {
+		if (table[i] === true) {
+			for (let num of numbers) {
+				table[i + num] = true;
+			}
+		}
+	}
+
+	return table[targetSum];
+
+};
+
+
+howSum tabulation version 
+
+put null in all squares versus false for this, and for 0 we can give it an empty array. 
+
+take the numbers from a given array to sum up to a number, you can use a number multiple times on iterations 
+
+O(m^2n) time 
+O(m^2) 
+
+polynomial not exponintial 
+
+
+
+
+
+const howSum = (targetSum, numbers) => {
+	const table = Array (targetSum +1).fill(null);
+	table[0] = [];
+
+	for (let i = 0; i <= targetSum; i++) {
+		if (table[i]!== null) {
+			for (let num of numbers) {
+				table[i+num] = [...table[i], num];
+			}
+		}
+	} 	
+
+	return table[targetSum;]
+
+};
