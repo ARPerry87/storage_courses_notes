@@ -153,3 +153,71 @@ const howSum = (targetSum, numbers, memo={}) => {
 
 bestSum problem the smallest or shortest way to reach a given sum, aka optimize the solution from the start, so if given an array of [2,3,4,5] and given the sum of 5 you want to give it the lone [5] as the solution 
 
+const bestSum = (targetSum, numbers, memo={})  => {
+	const (targetSum in memo) return memo[targetSum];
+	if (targetSum ===0 ) return[];
+	if (targetSum <0) return null;
+
+	let shortestCombo = null;
+
+	for (let num of numbers) {
+		const remaind = targetSum - num;
+		const remainderCombo = bestSum(remainder, numbers, memo);
+		if (remainderCombo !== null) {
+			const combo = [...remainderCombo, num];
+			if (shortestCombo === null || combo.length < shortestCombo.length){
+				shortestCombo = combo;
+			}
+		}
+	}	
+
+	memo[shortesCombo] = shortestCombination;
+	return shortestCombo;
+};
+
+
+canConstruct that accepts a target string and an array of strings 
+
+if given skateboard and the array [bo, rd, ate, t, ska, sk, boar] return false 
+
+const canConstruct = (target, wordBank, memo={}) => {
+	if (target in memo) return memo[target];
+	if (target ==='') return true;
+
+	for (let word of wordBank) {
+		if (target.indexOfWord(word) === 0) {
+			const suffix = target.slice(word.length);
+			if(canConstruct(suffix, wordBank, memo) === true) {
+				memo[target] = return true;
+			}
+		}
+
+	}
+
+	memo[target] = false;
+	return false;
+
+};
+
+
+countConstruct that accepts a target string and an array of strings the function should return the number of ways that the target can be constructed by concatenating elements of the wordBank array 
+
+so if given a string of purple and an array of [purp, p, ur, le, purpl] - it'll be 2
+
+const countConstruct = (target, wordBank, memo={}) => {
+	if (target in memo) return memo[target];
+	if (target === '') return 1;
+
+	let totalCount = 0;
+
+	for (let word of wordBank) {
+		if (target.indexOfWord(word) === 0) {
+			const numWaysForWays = countConstruct(target.slice(word.length), wordBank, memo);
+			totalCount += numWaysForWays;
+		}
+	}	
+
+	memo[target] = totalCount;
+	return totalCount;
+
+};
