@@ -369,3 +369,116 @@ const howSum = (targetSum, numbers) => {
 	return table[targetSum;]
 
 };
+
+
+bestSum tabulation 
+
+shortest combination that add up to exactly the target sum if there's
+
+if given 8 and given [2,3,5] then return [3,5] rather than 2,2,2,2 or 2,3,3 
+
+If it's zero we store [] at the first index then put null at the first step and look two spaces ahead for 2, for 3 we populate 3 and look 3 spaces ahead, populate 5, etc. 
+
+We then move ahead by one step through the index, there's no way to create a one, as there's no one in the array
+
+We then start tabulating the ways to add up the ways to create various numbers in the array up to 8, so 2 would be stored as 2, 3 as 3, 4 as 2,2 5 as 5, 6 as 3,3, 7 as 2,5 and 8 would first start as 3,5 at first but then you could then keep going through the algorithm to see if there's any shorter ways to iterate by adding in the 2,2,from 4, then the 5,3 from 7, and we see that indeed the 5,3 is the shortest path 
+
+O(m^2n) is the time complexity 
+O(m^2) is the space as it's a two dimensional array
+
+code: 
+
+const bestSum = (targetSum, numbers) => {
+	const table = Array(targetSum +1).fill(null);
+	table[0] = [];
+
+
+	for (let i = 0; i <= targetSum; i++) {
+		if (table[i] !== null) {
+			for (let num of numbers) {
+				const combo = [...table[i], num];
+				// if this current combo is shorter than what is already stored 
+				if(!table[i + num || table[i + num].length > combo.length){ //!table will evaluate to true ultimately which will force the assignment anyway and the or will make sure we won't trigger the rest of the statement on a null 
+					table[i + num] = combo; 
+				} 
+			}
+		}
+	}	
+
+	return table[targetSum];
+
+};
+
+
+canConstruct with tabulation 
+
+if you can construct a string in an array then evaluate to true 
+
+you need to make an extra space so that you can store the entire target string otherwise you will only end up with say you have abcdef, you would only end up with abcde, so you'd need a 7 index array instead of a 6 index array 
+
+start with a seed of true and the rest as false, and begin stepping through 
+
+code: 
+
+const canConstruct = (target, wordBank) => {
+	const table = Array(target + 1).fill(false);
+	table[0] = true;
+
+	for (let = 0; i <= target.length; i++) {
+		if (table[i] === true){
+			for (let word of wordBank) {
+			//if the word matches the characters starting at position i 
+				if (target.slice(i, i + word.length) === word){
+					table[i + word.length] = true;
+
+				}
+			}
+		}
+
+	}
+
+	return table[target.length];
+
+};
+
+
+
+countConstruct problem in tabulation 
+
+when working with values while stepping we add our current values to the next step for our length 
+
+const countConstruct = (target, wordBank) => {
+	const table = Array(target.length + 1).fill(0);
+	table[0] = 1;
+
+	for (let i = 0; i <= target.length; i++) {
+		for (let word of wordBank){
+			if (target.slice(i, i + word.length) === word) {
+				table[i + word.length] += table[i];
+			}
+		}
+	}	
+
+	table[target.length];
+};
+
+
+allConstruct problem with tabulation 
+
+
+const allConstruct = (target, wordBank) => {
+	const table = Array(target.length + 1).fill().map(()=>[]);
+	table[0] = [[]];
+
+	for (let i = 0; i <= target.length; i++) {
+		for (let word of wordBank) {
+			if (target.slice(i, i + word.length) === word) {
+				const newCombo = table[i].map(subArray => [...subArray, word]);
+				table[i + word.length].push(...newCombo);
+			}
+		}
+	} 	
+
+	return table[target.length];
+
+};
